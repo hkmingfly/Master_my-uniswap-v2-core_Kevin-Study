@@ -19,6 +19,13 @@
 
 pragma solidity =0.5.16;
 
+
+/*
+这个合约是一个特殊的ERC20,把ETH和换成ERC20 的WETH；
+这个合约里面存储的ETH总是等于它发行的代币WETH, (除非有人直接使用 WETH_address.transfer 向它发送了ETH )；
+Pair合约的交易对总是ERC20代币, 不能进行 ETH 和 ERC20 之间的交易, 所以 WETH就被创造出来；
+deposit()存入ETH获得WETH，withdraw()是销毁WETH获得ETH，这两个方法通常是由 Router来调用的。
+*/
 contract WETH9 {
     string public name     = "Wrapped Ether";
     string public symbol   = "WETH";
