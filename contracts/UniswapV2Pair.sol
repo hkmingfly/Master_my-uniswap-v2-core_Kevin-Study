@@ -184,17 +184,17 @@ function _update(
     if (timeElapsed > 0 && _reserve0 != 0 && _reserve1 != 0) {
         // * never overflows, and + overflow is desired
         //价格0最后累计 += 储备量1 * 2**112 / 储备量0 * 时间流逝
-        //solium-disable-next-line
+        //solium-disable-next-line 
         //用于价格预言机
         price0CumulativeLast +=
             uint256(UQ112x112.encode(_reserve1).uqdiv(_reserve0)) *
             timeElapsed;
         //价格1最后累计 += 储备量0 * 2**112 / 储备量1 * 时间流逝
-        //solium-disable-next-line
+        //solium-disable-next-line 
         price1CumulativeLast +=
             uint256(UQ112x112.encode(_reserve0).uqdiv(_reserve1)) *
             timeElapsed;
-    }
+    } 
     //余额0,1放入储备量0,1
     reserve0 = uint112(balance0);
     reserve1 = uint112(balance1);
